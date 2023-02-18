@@ -14,8 +14,8 @@
     <div class="topbox">
       <div class="logotext">WeatherNow</div>
       <div class="search">
-        <input type="search" name="searchbox" id="search" placeholder=" Enter city name ">
-        <button class="searchbutton">Search</button>
+        <input type="search" name="searchbox" id="searchcity" placeholder=" Enter city name ">
+        <button class="searchbutton" onclick="findTemperature()">Search</button>
       </div>
     </div>
     <div class="innercontainer">
@@ -23,11 +23,13 @@
       <div class="celsiusandtimebox">
         <div class="innerdiv">
           <div class="celsius">
+
             <div class="celsiusvaluebox">
-              <i></i>
+              <img src="/Icons/celsiusIcon.svg" alt="celsius">
               <b id="celsiusvalue"></b>
             </div>
-            <div class="city"></div>
+
+            <div class="city" id="city"></div>
           </div>
           <div class="dateandtime">
             <div class="time"></div>
@@ -42,7 +44,7 @@
           <div class="logo"><img src="/Icons/free_icon_1 (6).svg" alt=""></div>
           <div class="details" id="card1">
             <div class="propertyname">Humidity</div>
-            <div class="propertyvalue" id="propertyvalue"></div>
+            <div class="propertyvalue" id="humidity"></div>
           </div>
         </div>
 
@@ -50,7 +52,7 @@
           <div class="logo"><img src="/Icons/free_icon_1 (5).svg" alt="wind"></div>
           <div class="details" id="card2">
             <div class="propertyname">Wind</div>
-            <div class="propertyvalue" id="propertyvalue"></div>
+            <div class="propertyvalue" id="wind"></div>
           </div>
         </div>
 
@@ -58,7 +60,7 @@
           <div class="logo"><img src="/Icons/free_icon_1.svg"/ alt="sunrise"></div>
           <div class="details" id="card3">
             <div class="propertyname">Sunrise</div>
-            <div class="propertyvalue" id="propertyvalue"></div>
+            <div class="propertyvalue" id="sunrise"></div>
           </div>
         </div>
 
@@ -66,7 +68,7 @@
           <div class="logo"><img src="/Icons/free_icon_1 (1).svg" alt="sunset"></div>
           <div class="details" id="card4">
             <div class="propertyname">Cloud</div>
-            <div class="propertyvalue" id="propertyvalue"></div>
+            <div class="propertyvalue" id="cloud"></div>
           </div>
         </div>
 
@@ -74,7 +76,7 @@
           <div class="logo"><img src="/Icons/free_icon_1 (2).svg" alt="cloud"></div>
           <div class="details" id="card5">
             <div class="propertyname">Feels like</div>
-            <div class="propertyvalue" id="propertyvalue"></div>
+            <div class="propertyvalue" id="feelslike"></div>
           </div>
         </div>
 
@@ -82,7 +84,7 @@
           <div class="logo"></div>
           <div class="details" id="card6">
             <div class="propertyname">Sunset</div>
-            <div class="propertyvalue" id="propertyvalue"></div>
+            <div class="propertyvalue" id="sunset"></div>
           </div>
         </div>
         
