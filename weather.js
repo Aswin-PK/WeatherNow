@@ -9,6 +9,38 @@ const celsiusvalue = document.getElementById('celsiusvalue');
 const city = document.getElementById('city');
 
 
+const timeValue = document.getElementById('time');
+const dayValue = document.getElementById('date');
+
+// printing the current date and times by using the Date object...........
+
+const date = new Date(); 
+
+// for DAY..........
+
+
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+let day = date.getDay();
+
+dayValue.textContent = `${days[day]}`;
+
+
+// for TIME..........
+
+let hour = date.getHours();
+let minute = date.getMinutes();
+
+if(minute<10 || hour<10)
+	minute = `0${minute}`;
+	hour = `0${hour}`;
+
+if(hour > 12){
+	timeValue.textContent = `${hour-12}:${minute} PM`;
+}
+else{
+	timeValue.textContent = `${hour}:${minute} AM`;
+}
+
 
 
 const options = {
