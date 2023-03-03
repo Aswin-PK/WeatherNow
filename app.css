@@ -2,15 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Verdana','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 body{
     width: 100vw;
     height: 100vh;
-    background-color: blue;
+    background-color: #ecf0f3;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background-image: url("/Images/pexels-pixabay-209831.jpg"); */
+    object-fit: contain;
 }
 
 
@@ -18,7 +20,7 @@ body{
     width: 50%;
     height: 80%;
     border-radius: 1em;
-    background-color: red;
+    background-color: #ecf0f3;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,34 +35,60 @@ body{
 .container .topbox{
     width: 100%;
     height: 15%;
-    background-color: yellow;
     padding: 1em;
+    /* background-color: #a23a3a; */
     border-radius: 1em;
 }
 .container .topbox .logotext{
     float: left;
     font-size: 2em;
+    display: flex;
+    align-items: center;
+    color: #0091ff;
+    height: 100%;
 }
 .container .topbox .search{
     float: right;
     width: 50%;
     height: 100%;
+    /* background-color: red; */
     padding: 0.1em;
-    background-color: red;
 }
 .container .topbox .search input{
     width: 70%;
     height: 100%;
     border-radius: 0.5em;
+    border: 1px solid #0091ff;
+    background-color: transparent;
+    padding-left: 0.5em;
+    font-size: 1em;
+    box-shadow: inset -2px -2px 12px #fff,
+                inset -2px -2px 5px #fff,
+                inset  2px 2px 12px rgba(0,0,0,0.16);
+    outline: none;
+    color: #007ad7;
 }
+.container .topbox .search input::placeholder{
+    color: #0091ff;
+}
+
+
 .container .topbox .search .searchbutton{
     width: 28%;
     height: 100%;
+    font-size: 1em;
+    color: #ffffff;
     border-radius: 0.5em;
-    background-color: #fff;
+    background-color: #0091ff;
     border: none;
+    box-shadow: inset 5px 5px 12px #4db3f8,
+                5px 5px 12px rgba(0, 0, 0, 0.16);
 }
-
+.container .topbox .search .searchbutton:hover{
+    background-color: #007ad7;
+    box-shadow: inset 5px 5px 12px #39a1e6,
+                5px 5px 12px rgba(0, 0, 0, 0.16);
+}
 
 
 /* styling the middle container that contains the temperature, time and date ........ */
@@ -78,16 +106,20 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
+    background:linear-gradient(#00d5ff,#006aff);
     margin: 1em;
     position: relative;
     overflow: hidden;
+    box-shadow: inset 5px 5px 12px #40a6ff,
+                5px 5px 12px rgba(0,0,0,0.16);
 }
 .innercontainer .celsiusandtimebox .innerdiv{
     width: 100%;
     height: 40%;
     position: absolute;
     bottom: 1em;
-    padding: 0 2%;
+    padding: 0 5%;
 }
 .innercontainer .celsiusandtimebox .innerdiv .celsius,.dateandtime{
     width: 30%;
@@ -101,6 +133,11 @@ body{
     align-items: center;
     font-size: 4em;
 }
+.innercontainer .celsiusandtimebox .innerdiv .celsius .celsiusvaluebox img{
+    width: 0.5em;
+    height: 1em;
+}
+
 .innercontainer .celsiusandtimebox .innerdiv .celsius .city{
     width: 100%;
     height: 40%;
@@ -148,6 +185,8 @@ body{
     display: flex;
     align-items: center;
     padding: 1em 1.5em;
+    box-shadow: inset 5px 5px 12px #fff,
+                5px 5px 12px rgba(0,0,0,0.16);
 }
 .innercontainer .otherdetails .smallcontainer .logo{
     width: 40%;
@@ -168,6 +207,7 @@ body{
     width: 100%;
     height: 50%;
     font-size: 1.2em;
+    color: rgb(124, 124, 124);
     display: flex;
     align-items: center;
 }
