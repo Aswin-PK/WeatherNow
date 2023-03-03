@@ -30,10 +30,12 @@ dayValue.textContent = `${days[day]}`;
 let hour = date.getHours();
 let minute = date.getMinutes();
 
-if(minute<10 || hour<10)
+if(minute<10)
 	minute = `0${minute}`;
+if(hour<10)
 	hour = `0${hour}`;
-
+if(hour == 00)
+	hour = 12;
 if(hour > 12){
 	timeValue.textContent = `${hour-12}:${minute} PM`;
 }
@@ -42,6 +44,7 @@ else{
 }
 
 
+// accessing the weather API using the API key
 
 const options = {
 	method: 'GET',
@@ -72,25 +75,28 @@ fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Bangalore', 
 	.catch(err => console.error(err));
 
 
-
-
-function findTemperature(){
-	const cityname = document.getElementById('searchcity');
-	city = cityname.value;
-	// console.log(city);
-
-	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+city, options)
+const searchbutton = document.getElementById('searchbutton');
+searchbutton.addEventListener('click',()=>{
+	var cityname = document.getElementById('searchcity');
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+cityname.value, options)
 	.then(response => response.json())
 	.then(response => {
 		celsiusvalue.textContent = response.temp;
-
 		humidity.textContent = response.humidity;
 		wind.textContent = response.wind_speed;
-		sunrise.textContent = response.sunrise;
+		console.log(response.temp)
+		const sunrisetime= response.sunrise;
+		
+		const dateObj = new Date(sunrisetime * 1000);
+		const actualSunriseTime = dateObj.toTimeString().slice(0, 8);
+
+		sunrise.textContent = actualSunriseTime;
+
 		cloud.textContent = response.cloud_pct;
 		feelslike.textContent = response.feels_like;
 		sunset.textContent = response.sunset;
-		console.log(response);
+		
+		city.textContent = cityname.value;
 	})
 	.catch(err => console.error(err));
-}
+});
