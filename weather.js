@@ -27,13 +27,13 @@ dayValue.textContent = `${days[day]}`;
 
 // for TIME..........
 
-let hour = date.getHours();
-let minute = date.getMinutes();
+let hour = date.getHours().toString().padStart(2, '0');
+let minute = date.getMinutes().toString().padStart(2, '0');
 
-if(minute<10)
-	minute = `0${minute}`;
-if(hour<10)
-	hour = `0${hour}`;
+// if(minute<10)
+// 	minute = `0${minute}`;
+// if(hour<10)
+// 	hour = `0${hour}`;
 if(hour == 00)
 	hour = 12;
 if(hour > 12){
@@ -66,10 +66,24 @@ fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Bangalore', 
 
 		humidity.textContent = response.humidity;
 		wind.textContent = response.wind_speed;
-		sunrise.textContent = response.sunrise;
+
+		const unixTime1 = response.sunrise;
+		const date1 = new Date(unixTime1 * 1000);
+		const hours1 = date1.getHours().toString().padStart(2, '0'); // Get hours and pad with leading zero if needed
+		const minutes1 = date1.getMinutes().toString().padStart(2, '0'); // Get minutes and pad with leading zero if needed
+		const timeValue1 = `${hours1}:${minutes1} AM`;
+		sunrise.textContent = timeValue1;
+
 		cloud.textContent = response.cloud_pct;
 		feelslike.textContent = response.feels_like;
-		sunset.textContent = response.sunset;
+
+		const unixTime2 = response.sunset;
+		const date2 = new Date(unixTime2 * 1000);
+		const hours2 = date2.getHours().toString().padStart(2, '0'); // Get hours and pad with leading zero if needed
+		const minutes2 = date2.getMinutes().toString().padStart(2, '0'); // Get minutes and pad with leading zero if needed
+		const timeValue2 = `${hours2}:${minutes2} PM`;
+		sunset.textContent = timeValue2;
+
 		console.log(response);
 	})
 	.catch(err => console.error(err));
@@ -84,13 +98,9 @@ searchbutton.addEventListener('click',()=>{
 		celsiusvalue.textContent = response.temp;
 		humidity.textContent = response.humidity;
 		wind.textContent = response.wind_speed;
-		console.log(response.temp)
-		const sunrisetime= response.sunrise;
+		// const sunrisetime= response.sunrise;
+		// console.log(sunrisetime);
 		
-		const dateObj = new Date(sunrisetime * 1000);
-		const actualSunriseTime = dateObj.toTimeString().slice(0, 8);
-
-		sunrise.textContent = actualSunriseTime;
 
 		cloud.textContent = response.cloud_pct;
 		feelslike.textContent = response.feels_like;
