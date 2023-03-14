@@ -83,8 +83,8 @@ function getWeather(cityname){
 		sunset.textContent = timeValue2;
 		
 
-		cloud.textContent = response.cloud_pct;
-		feelslike.textContent = response.feels_like;
+		cloud.textContent = `${response.cloud_pct} %`;
+		feelslike.textContent = `${response.feels_like}'C`;
 		
 		city.textContent = cityname;
 	})

@@ -79,6 +79,7 @@ body{
     border-radius: 0.5em;
     background-color: #0091ff;
     border: none;
+    cursor: pointer;
     box-shadow: inset 5px 5px 12px #4db3f8,
                 5px 5px 12px rgba(0, 0, 0, 0.16);
 }
@@ -201,6 +202,7 @@ body{
     width: 75%;
     height: 100%;
     float: left;
+    margin-left: 0.4em;
 }
 .innercontainer .otherdetails .smallcontainer .details .propertyname{
     width: 100%;
