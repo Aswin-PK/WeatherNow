@@ -8,7 +8,6 @@ const sunset = document.getElementById('sunset');
 const celsiusvalue = document.getElementById('celsiusvalue');
 const city = document.getElementById('city');
 
-
 const timeValue = document.getElementById('time');
 const dayValue = document.getElementById('date');
 
@@ -26,11 +25,11 @@ dayValue.textContent = `${days[day]}`;
 let hour = date.getHours();
 let minute = date.getMinutes();
 
+
 if(hour == 00)
 	hour = 12;
 
 if(hour > 12){
-	
 	// converting time format like 13:00 PM  to 1:00 PM
 	timeValue.textContent = `${(hour-12).toString().padStart(2, '0')}:${(minute).toString().padStart(2, '0')} PM`;    
 }
