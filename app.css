@@ -11,13 +11,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-image: url("/Images/pexels-pixabay-209831.jpg"); */
     object-fit: contain;
 }
 
 
 .container{
-    width: 50%;
+    width: 40em;
     height: 80%;
     border-radius: 1em;
     background-color: #ecf0f3;
@@ -30,13 +29,13 @@ body{
 }
 
 
+
 /* styling the top container which include the searchbar and buttons ..........*/
 
 .container .topbox{
     width: 100%;
     height: 15%;
     padding: 1em;
-    /* background-color: #a23a3a; */
     border-radius: 1em;
 }
 .container .topbox .logotext{
@@ -51,7 +50,6 @@ body{
     float: right;
     width: 50%;
     height: 100%;
-    /* background-color: red; */
     padding: 0.1em;
 }
 .container .topbox .search input{
@@ -91,7 +89,7 @@ body{
 }
 
 
-/* styling the middle container that contains the temperature, time and date ........ */
+/* Styling the middle container that contains the temperature, time and date ........ */
 
 
 .innercontainer{
@@ -111,7 +109,8 @@ body{
     margin: 1em;
     position: relative;
     overflow: hidden;
-    box-shadow: inset 5px 5px 12px #40a6ff,
+    box-shadow: inset 5px 5px 12px #65b3fc,
+                inset -4px -4px 10px #005bdb,
                 5px 5px 12px rgba(0,0,0,0.16);
 }
 .innercontainer .celsiusandtimebox .innerdiv{
@@ -167,7 +166,7 @@ body{
 }
 
 
-/* STyling the bottom container which contains the humidity , wind speed, cloud , etc. details .....................*/
+/* Styling the bottom container which contains the humidity , wind speed, cloud , etc. details .....................*/
 
 .innercontainer .otherdetails{
     width: auto;
@@ -184,12 +183,12 @@ body{
     border-radius: 10px;
     display: flex;
     align-items: center;
-    padding: 1em 1.5em;
+    padding: 1em;
     box-shadow: inset 5px 5px 12px #fff,
                 5px 5px 12px rgba(0,0,0,0.16);
 }
 .innercontainer .otherdetails .smallcontainer .logo{
-    width: 40%;
+    width: 35%;
     height: 100%;
 }
 .innercontainer .otherdetails .smallcontainer .logo img{
@@ -199,22 +198,131 @@ body{
 }
 
 .innercontainer .otherdetails .smallcontainer .details{
-    width: auto;
+    width: 75%;
     height: 100%;
     float: left;
 }
 .innercontainer .otherdetails .smallcontainer .details .propertyname{
     width: 100%;
-    height: 50%;
-    font-size: 1.2em;
+    height: 40%;
+    font-size: 0.8em;
     color: rgb(124, 124, 124);
     display: flex;
     align-items: center;
 }
 .innercontainer .otherdetails .smallcontainer .details .propertyvalue{
     width: 100%;
-    height: 50%;
+    height: 60%;
     font-size: 1.2em;
     display: flex;
     align-items: center;
 }
+
+/* Media query stylings for  mobile devices .............*/
+
+@media (max-width: 480px){
+    .container{
+        width: 25em; 
+        gap: 1em;
+    }
+    .container .topbox{
+        position: absolute;
+        top:-2em;
+        width: 24em;
+        height: 15%;
+        padding: 0.5em;
+        border-radius: 1em;
+    }
+    .innercontainer{
+        width: 25em;
+        height: 100%;
+        z-index: 2;
+        margin-top: 5em;
+    }
+    .container .topbox .search{
+        margin-top: 1em;
+        width: 100%;
+        height: 2.5em;
+    }
+    .innercontainer .celsiusandtimebox > *{
+        font-size: 0.7em;
+    }
+    .innercontainer .otherdetails{
+        width: auto;
+        height: 60%;
+        padding: 1em;
+        display: grid;
+        row-gap: 0.5em;
+        column-gap: 1em;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: 30% 30% 30%;
+    }
+    .innercontainer .otherdetails .smallcontainer .logo{
+        width: 25%;
+        height: 100%;
+    }
+    .innercontainer .otherdetails .smallcontainer .details{
+        margin-left: 0.5em;
+        font-size: 2em;
+        width: 75%;
+        font-size: 0.9em;
+    }
+    .innercontainer .otherdetails .smallcontainer .details .propertyname{
+        font-size: 0.8em;
+    }
+}
+
+/* Media query stylings for tablet devices ..............*/
+
+@media (min-width: 481px) and (max-width: 640px){
+    .container{
+        width: 30em;
+        gap: 1em;
+    }
+    .container .topbox{
+        position: absolute;
+        top:-2em;
+        width: 29em;
+        height: 15%;
+        padding: 0.5em;
+        border-radius: 1em;
+    }
+    .innercontainer{
+        width: 30em;
+        height: 100%;
+        z-index: 2;
+        margin-top: 5em;
+    }
+    .container .topbox .search{
+        width: 100%;
+        height: 3em;
+    }
+    .innercontainer .celsiusandtimebox > *{
+        font-size: 0.7em;
+    }
+    .innercontainer .otherdetails{
+        width: auto;
+        height: 60%;
+        padding: 1em;
+        display: grid;
+        row-gap: 0.5em;
+        column-gap: 1em;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: 30% 30% 30%;
+    }
+    .innercontainer .otherdetails .smallcontainer .logo{
+        width: 25%;
+        height: 100%;
+    }
+    .innercontainer .otherdetails .smallcontainer .details{
+        margin-left: 0.5em;
+        font-size: 2em;
+        width: 75%;
+        font-size: 0.9em;
+    }
+    .innercontainer .otherdetails .smallcontainer .details .propertyname{
+        font-size: 0.8em;
+    }
+}
+
+

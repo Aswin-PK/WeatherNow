@@ -16,31 +16,26 @@ const dayValue = document.getElementById('date');
 
 const date = new Date(); 
 
-// for DAY..........
-
-
+// for DAY calculation..........
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 let day = date.getDay();
-
 dayValue.textContent = `${days[day]}`;
 
 
 // for TIME..........
+let hour = date.getHours();
+let minute = date.getMinutes();
 
-let hour = date.getHours().toString().padStart(2, '0');
-let minute = date.getMinutes().toString().padStart(2, '0');
-
-// if(minute<10)
-// 	minute = `0${minute}`;
-// if(hour<10)
-// 	hour = `0${hour}`;
 if(hour == 00)
 	hour = 12;
+
 if(hour > 12){
-	timeValue.textContent = `${hour-12}:${minute} PM`;
+	
+	// converting time format like 13:00 PM  to 1:00 PM
+	timeValue.textContent = `${(hour-12).toString().padStart(2, '0')}:${(minute).toString().padStart(2, '0')} PM`;    
 }
 else{
-	timeValue.textContent = `${hour}:${minute} AM`;
+	timeValue.textContent = `${(hour-12).toString().padStart(2, '0')}:${(minute).toString().padStart(2, '0')} AM`;
 }
 
 
@@ -54,18 +49,25 @@ const options = {
 	}
 };
 
-// by default city is set to bangalore............
 
-city.textContent = 'Bangalore';
+const cityname = document.getElementById('searchcity');
+const searchbutton = document.getElementById('searchbutton');
+
+searchbutton.addEventListener('click', ()=>{
+
+	getWeather(cityname.value);  // calling getWeather with the value entered in the textbox..
+
+});
 
 
-fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Bangalore', options)
+function getWeather(cityname){
+
+	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+cityname, options)
 	.then(response => response.json())
 	.then(response => {
 		celsiusvalue.textContent = response.temp;
-
-		humidity.textContent = response.humidity;
-		wind.textContent = response.wind_speed;
+		humidity.textContent = `${response.humidity} %`;
+		wind.textContent = `${response.wind_speed} m/s`;
 
 		const unixTime1 = response.sunrise;
 		const date1 = new Date(unixTime1 * 1000);
@@ -74,39 +76,20 @@ fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Bangalore', 
 		const timeValue1 = `${hours1}:${minutes1} AM`;
 		sunrise.textContent = timeValue1;
 
-		cloud.textContent = response.cloud_pct;
-		feelslike.textContent = response.feels_like;
-
 		const unixTime2 = response.sunset;
 		const date2 = new Date(unixTime2 * 1000);
 		const hours2 = date2.getHours().toString().padStart(2, '0'); // Get hours and pad with leading zero if needed
 		const minutes2 = date2.getMinutes().toString().padStart(2, '0'); // Get minutes and pad with leading zero if needed
-		const timeValue2 = `${hours2}:${minutes2} PM`;
+		const timeValue2 = `${(hours2-12).toString().padStart(2, '0')}:${(minutes2).toString().padStart(2, '0')} PM`;
 		sunset.textContent = timeValue2;
-
-		console.log(response);
-	})
-	.catch(err => console.error(err));
-
-
-const searchbutton = document.getElementById('searchbutton');
-searchbutton.addEventListener('click',()=>{
-	var cityname = document.getElementById('searchcity');
-	fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+cityname.value, options)
-	.then(response => response.json())
-	.then(response => {
-		celsiusvalue.textContent = response.temp;
-		humidity.textContent = response.humidity;
-		wind.textContent = response.wind_speed;
-		// const sunrisetime= response.sunrise;
-		// console.log(sunrisetime);
 		
 
 		cloud.textContent = response.cloud_pct;
 		feelslike.textContent = response.feels_like;
-		sunset.textContent = response.sunset;
 		
-		city.textContent = cityname.value;
+		city.textContent = cityname;
 	})
 	.catch(err => console.error(err));
-});
+}
+
+getWeather('Bangalore'); 	// By default cityname is set to Bangalore
