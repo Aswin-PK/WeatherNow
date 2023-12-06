@@ -34,7 +34,7 @@ if(hour > 12){
 	timeValue.textContent = `${(hour-12).toString().padStart(2, '0')}:${(minute).toString().padStart(2, '0')} PM`;    
 }
 else{
-	timeValue.textContent = `${(hour-12).toString().padStart(2, '0')}:${(minute).toString().padStart(2, '0')} AM`;
+	timeValue.textContent = `${(hour).toString().padStart(2, '0')}:${(minute).toString().padStart(2, '0')} AM`;
 }
 
 
